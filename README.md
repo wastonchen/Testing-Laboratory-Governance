@@ -1,5 +1,5 @@
 # Testing-Laboratory-Governance
-A risk-based framework for qualification, monitoring, and governance of Testing, Inspection, and Certification partners， See the Wiki Tab.
+A risk-based framework for qualification, monitoring, and governance of Testing, Inspection, and Certification partners, Risk Management, See the Wiki Tab.
 
 1, The funny part would be the ER Structure for labs, Core database tables, Laboratory master data, accreditation and scheme records,Capacity, personnel, performance metrics, Audit management, Audit findings and NC, capa tracking,Risk and operational list, regulations.
 
