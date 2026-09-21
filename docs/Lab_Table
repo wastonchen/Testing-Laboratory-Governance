@@ -22,8 +22,6 @@ tb_compliance_rule（目标市场合规映射表）
 
 tb_capability_scope（实验室能力申报主表）
 
-tb_capability_parameter（极限能力参数表）
-
 tb_equipment（关键检测设备台账表）
 
 tb_equipment_calibration（设备计量校准记录表）
