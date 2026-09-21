@@ -14,4 +14,4 @@ A risk-based framework for qualification, monitoring, and governance of Testing,
 What is to revise for the real?
 What if the with Client?
 Finance: optional
-Reference: ISO 9001/ ISO 17025/ISO 17065/ IECEE/CNAS/FDA etc
+Reference: ISO 9001/ ISO 17025/ISO 17065/ IECEE/CNAS/FDA/CPSC/Safety Gate etc
