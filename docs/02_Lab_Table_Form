@@ -1,69 +1,33 @@
-## 📋 Laboratory Onboarding & Capability Assessment Form Design (实验室准入与能力申报表单设计)
+17 个数据库表：
 
-为了实现外部实验室能力与平台合规需求的自动化匹配，设计了标准化数据采集表单（Data Collection Form）。表单数据直接映射至后端的 17-Table ER 关系型数据库结构。
+tb_laboratory（实验室主体表）
 
----
+tb_laboratory_site（实验室分场所/站点表）
 
-### 1. 基础信息与资质认证 (Laboratory Profile & Accreditation)
+tb_lab_contact（联系人/对接人表）
 
-> **目标**：评估实验室的法律实体资质、认可权威度及合规底线。
+tb_accreditation（资质证书主表）
 
-| 字段名称 (Field Name) | 字段类型 (Type) | 必填 | 对应数据库表 (Mapped Entity) | 说明 / 填报要求 |
-| :--- | :--- | :---: | :--- | :--- |
-| **Lab Legal Name** | Text | Yes | `tb_laboratory` | 实验室法人实体全称 |
-| **Location / Region** | Dropdown / Text | Yes | `tb_laboratory_site` | 实验室地理位置（国家/省/市），用于就近送样匹配 |
-| **Accreditation Body** | Multi-Select | Yes | `tb_accreditation` | 认可机构（如 CNAS, CMA, A2LA, NVLAP, DAkkS 等） |
-| **Certificate No.** | Text | Yes | `tb_accreditation` | 认可证书编号及有效截止日期（触发自动过期预警） |
-| **ILAC-MRA Mutual Status** | Boolean | Yes | `tb_accreditation` | 是否具备 ILAC-MRA 互认资质（国际认可必备） |
-| **Scope Document (PDF)** | Attachment | Yes | `tb_attachment` | 官方认可委发布的第三方能力附表（用于底稿存档与OCR复核） |
+tb_accreditation_scope（资质认可授权范围明细表）
 
----
+tb_accreditation_audit（实验室履约与稽核记录表）
 
-### 2. 标准与测试能力申报 (Testing Scope & Standard Mapping)
+tb_product_category（产品品类分类表）
 
-> **目标**：精准打通产品测试标准（如 IEC 62368-1, UN 38.3, CISPR 32）与实验室具体子项能力。
+tb_test_standard（测试标准主表）
 
-| 字段名称 (Field Name) | 字段类型 (Type) | 必填 | 对应数据库表 (Mapped Entity) | 说明 / 填报要求 |
-| :--- | :--- | :---: | :--- | :--- |
-| **Standard Number** | Searchable Select | Yes | `tb_test_standard` | 测试标准号（如 `IEC 62368-1:2023`, `UN 38.3`） |
-| **Clause / Section** | Multi-Select / Text | Yes | `tb_standard_clause` | 申报的具体条款/项目（如 Annex M - Battery Protection, Clause 5.4） |
-| **In-House / Outsource** | Radio Enum | Yes | `tb_capability_scope` | 本地自测 (In-house) 或 分包 (Subcontract) |
-| **Max Capacity Range** | Range / Text | No | `tb_capability_parameter` | 关键测试极限（如最大电压/电流、温湿度箱容积、EMC频段范围） |
-| **Test Report Language** | Multi-Select | Yes | `tb_capability_scope` | 可出具报告语种（中/英/日/法等） |
+tb_standard_clause（标准条款/测试细项表）
 
----
+tb_compliance_rule（目标市场合规映射表）
 
-### 3. 关键设备与设施能力 (Equipment & Facility Specs)
+tb_capability_scope（实验室能力申报主表）
 
-> **目标**：验证实验室是否具备硬性检测设备，用于对申报能力进行二次逻辑校验。
+tb_capability_parameter（极限能力参数表）
 
-| 字段名称 (Field Name) | 字段类型 (Type) | 必填 | 对应数据库表 (Mapped Entity) | 说明 / 填报要求 |
-| :--- | :--- | :---: | :--- | :--- |
-| **Equipment Category** | Dropdown | Yes | `tb_equipment` | 设备类别（如：安全测试仪、充放电柜、EMC暗室、振动台） |
-| **Model & Brand** | Text | Yes | `tb_equipment` | 设备型号与品牌（验证精度与品牌认可度） |
-| **Calibration Status** | Date / Boolean | Yes | `tb_equipment_calibration` | 最近计量校准日期与证书有效期 |
-| **Parallel Testing Units** | Number | Yes | `tb_equipment` | 同类设备的并发测试工位数（评估高峰期产能承载） |
+tb_equipment（关键检测设备台账表）
 
----
+tb_equipment_calibration（设备计量校准记录表）
 
-### 4. 服务时效与商务 SLA (Service Level & Turnaround Time)
+tb_sla_pricing（服务时效与报价表，这后面在尝试）
 
-> **目标**：为平台运营和卖家履约提供测试周期与成本评估依据。
-
-| 字段名称 (Field Name) | 字段类型 (Type) | 必填 | 对应数据库表 (Mapped Entity) | 说明 / 填报要求 |
-| :--- | :--- | :---: | :--- | :--- |
-| **Standard TAT (Days)** | Number | Yes | `tb_sla_pricing` | 常规测试周期（送样起计，单位：工作日） |
-| **Express TAT (Days)** | Number | No | `tb_sla_pricing` | 加急测试周期（如 3 Days / 24 hrs） |
-| **Sample Quantity Needed**| Number | Yes | `tb_test_requirement` | 标准测试所需的样品数量要求（与产品尺寸/电池容量挂钩） |
-| **Pricing Tier / Standard Fee**| Currency / Number | No | `tb_sla_pricing` | 基础测试基准挂牌价/协议折扣系数 |
-
----
-
-### 5. 质量与合规现场/远程核查表 (Audit & Compliance Checklist)
-
-> **目标**：用于风险管理团队（Risk Managers）对实验室进行定期 Compliance Audit。
-
-* [ ] **ISO/IEC 17025 体系运行**：质量手册与程序文件是否覆盖最新标准变更。
-* [ ] **盲样对照测试（Proficiency Testing）**：过去 12 个月内参与能力验证（PT/EAM）的记录与结果（Satisfactory/Unsatisfactory）。
-* [ ] **报告真实性与防伪机制**：报告是否支持 QR Code/官方数据库在线查验防伪。
-* [ ] **数据诚信与独立性**：是否有防止测试数据被捏造/篡改的记录控制程序（Data Integrity Policy）。
+tb_test_order（测试委托派单记录表这后面在尝试）
