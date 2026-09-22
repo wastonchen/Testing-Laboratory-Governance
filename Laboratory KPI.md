@@ -1,0 +1,9 @@
+- Open CAPA
+- Overdue CAPA
+- Repeat findings
+- Accreditation status
+- Scope changes
+- Personnel competency gaps
+- Audit findings
+- Testing turnaround time
+- Complaint rate
