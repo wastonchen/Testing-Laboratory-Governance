@@ -21,7 +21,7 @@ Risk List:
 | Corrective Action | Repeat findings / overdue CAPA | High | CAPA tracking | Monthly monitoring | Escalation |
 | Impartiality | Conflict of interest | High | COI declaration | Periodic assessment | Investigation / escalation |
 
-
+Risk levels are indicative and should be determined based on likelihood, impact, and available evidence.
 
 
 
