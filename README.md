@@ -17,5 +17,5 @@ Finance: optional
 Reference: ISO 9001/ ISO 17025/ISO 17065/ IECEE/CNAS/FDA/CPSC/Safety Gate/FCC etc
 
 Advanced Graphy:
-[Products (P)] ──( Matrix A )──► [Standard Clauses (C)] ──( Matrix B )──► [Laboratories (L)]
+[Products (P)] ──( Matrix A )──► [Standard Clauses (C)] ──( Matrix B )──► [Laboratories (L)], the compliacted chain is hard to detect hidden fraud rings. creates huge compliance and litigation risk. relational databases only can check the individual records, but not for the mutiple records. the Neo4j/Neptune/NebulaGraph may the fiddle.
 
