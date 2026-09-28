@@ -17,5 +17,4 @@ Finance: optional
 Reference: ISO 9001/ ISO 17025/ISO 17065/ IECEE/CNAS/FDA/CPSC/Safety Gate/FCC etc
 
 
-Advanced Graphy:
-[Products (P)] ──( Matrix A )──► [Standard Clauses (C)] ──( Matrix B )──► [Laboratories (L)]
+
