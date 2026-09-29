@@ -12,6 +12,7 @@ Laboratory KPIs are used to:
 - Support risk-based laboratory oversight
 - Identify areas requiring enhanced monitoring or escalation
 - Provide management visibility into laboratory performance
+-  Health Check??
 
 ---
 
